@@ -41,7 +41,7 @@ def registrar_venta():
 
     ventas.append(venta)
     guardar_ventas(ventas)
-    print("\n (❌) Venta registrada exitosamente")
+    print("\n ( ✔️ ) Venta registrada exitosamente")
 
 def generar_reporte_ventas():
     ventas = cargar_ventas()
