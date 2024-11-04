@@ -13,24 +13,24 @@ def guardar_ventas(ventas):
         json.dump(ventas, file, indent=4)
 
 def registrar_venta():
-    print("Por favor ingrese el modelo del vehículo vendido ")
+    print("\n ➔ Por favor ingrese el m͟o͟d͟e͟l͟o͟ del vehículo vendido ( 🛒 ) : ")
     modelo=input("--> ")
     try:
-        print("Ingrese la fecha de la venta por favor (YYYY-MM-DD) ")
+        print("\n ➔ Ingrese la fecha de la venta por favor (YYYY-MM-DD) 📅 : ")
         fecha=input("--> ")
         datetime.strptime(fecha, "%Y-%m-%d")
     except ValueError:
-        print("Fecha incorrecta, la fecha denbe ser asi: ejemplo (2024-10-23)")
+        print("\n (❌) Fecha incorrecta, la f͟e͟c͟h͟a͟ denbe ser asi: ejemplo (2024-10-23)")
         return
     
     try:
-        print("Ingrese la cantidad vendida")
+        print("\n ➔ Ingrese la c͟a͟n͟t͟i͟d͟a͟d͟ vendida ( 🗃️ ) : ")
         cantidad=int(input())
         if cantidad <= 0:
-            print("La cantidad no debe tener este signo (-)")
+            print("\n (❌) La cantidad no debe tener este signo (-)")
             return
     except ValueError:
-        print("La cantidad debe ser un número entero ")
+        print("\n (❌) La cantidad debe ser un número entero ")
         return
 
     ventas = cargar_ventas()
@@ -43,12 +43,12 @@ def registrar_venta():
 
     ventas.append(venta)
     guardar_ventas(ventas)
-    print("Venta registrada exitosamente")
+    print("\n (❌) Venta registrada exitosamente")
 
 def generar_reporte_ventas():
     ventas = cargar_ventas()
     if not ventas:
-        print("No hay ventas registradas.")
+        print("\n (❌) No hay ventas registradas.")
         return
 
     reporte_mensual = {}
@@ -68,9 +68,10 @@ def generar_reporte_ventas():
     # Guardar el reporte en un archivo
     with open("reporte_ventas_mensual.txt", "w") as file:
         for mes_anio, modelos in reporte_mensual.items():
+            print("\n           ﹔📋﹒reporte ﹗")
             file.write(f"--- Mes: {mes_anio} ---\n")
             for modelo, cantidad in modelos.items():
                 file.write(f"Modelo: {modelo}, Cantidad Vendida: {cantidad}\n")
             file.write("\n")
     
-    print("Reporte mensual de ventas generado exitosamente")
+    print("\n ( ✔️ ) Reporte mensual de ventas generado exitosamente")
