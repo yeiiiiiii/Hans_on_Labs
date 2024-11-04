@@ -13,8 +13,7 @@ def guardar_ventas(ventas):
         json.dump(ventas, file, indent=4)
 
 def registrar_venta():
-    print("\n ➔ Por favor ingrese el m͟o͟d͟e͟l͟o͟ del vehículo vendido ( 🛒 ) : ")
-    modelo=input("--> ")
+    modelo=input("\n ➔ Por favor ingrese el m͟o͟d͟e͟l͟o͟ del vehículo vendido ( 🛒 ) : ")
     try:
         fecha=input("\n ➔ Ingrese la fecha de la venta por favor (YYYY-MM-DD) 📅 : ")
         datetime.strptime(fecha, "%Y-%m-%d")
