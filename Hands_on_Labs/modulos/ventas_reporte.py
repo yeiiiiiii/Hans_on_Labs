@@ -1,5 +1,6 @@
 import json
 from datetime import datetime
+from modulos.registros_lista import cargar_vehiculos
 
 def cargar_ventas():
         try:
@@ -13,35 +14,45 @@ def guardar_ventas(ventas):
             json.dump(ventas, file, indent=4)
 
 def registrar_venta():
-        modelo=input("\n ➔ Por favor ingrese el m͟o͟d͟e͟l͟o͟ del vehículo vendido ( 🛒 ) : ")
-        try:
-            fecha=input("\n ➔ Ingrese la fecha de la venta por favor (YYYY-MM-DD) 📅 : ")
-            datetime.strptime(fecha, "%Y-%m-%d")
-        except ValueError:
-            print("\n (❌) Fecha incorrecta, la f͟e͟c͟h͟a͟ denbe ser asi: ejemplo (2024-10-23)")
-            return
-        
-        try:
-            print("\n ➔ Ingrese la c͟a͟n͟t͟i͟d͟a͟d͟ vendida ( 🗃️ ) : ")
-            cantidad=int(input())
-            if cantidad <= 0:
-                print("\n (❌) La cantidad no debe tener este signo (-)")
-                return
-        except ValueError:
-            print("\n (❌) La cantidad debe ser un número entero ")
-            return
+    modelo=input("\n ➔ Por favor ingrese el m͟o͟d͟e͟l͟o͟ del vehículo vendido ( 🛒 ) : ")
+    
+    #Se cargan los modelos existentes 
+    vehiculos = cargar_vehiculos()
+    modelos_registrados = {v["modelo"] for v in vehiculos}
 
-        ventas = cargar_ventas()
+    #Se valida si el modelo existe en los modelos registrados
+    if modelo not in modelos_registrados:
+        print("\n (❌) Error: El modelo ingresado no está registrado.")
+        return
+
+    try:
+        fecha = input("\n ➔ Ingrese la fecha de la venta por favor (YYYY-MM-DD) 📅 : ")
+        datetime.strptime(fecha, "%Y-%m-%d")
+    except ValueError:
+        print("\n (❌) Fecha incorrecta, la fecha debe ser así: ejemplo (2024-10-23)")
+        return
+
+    try:
+        print("\n ➔ Ingrese la c͟a͟n͟t͟i͟d͟a͟d͟ vendida ( 🗃️ ) : ")
+        cantidad = int(input())
+        if cantidad <= 0:
+            print("\n (❌) La cantidad no debe ser negativa ni cero.")
+            return
+    except ValueError:
+        print("\n (❌) La cantidad debe ser un número entero.")
+        return
+
+    ventas = cargar_ventas()
         
-        venta = {
+    venta = {
             "modelo": modelo,
             "fecha": fecha,
             "cantidad": cantidad
         }
 
-        ventas.append(venta)
-        guardar_ventas(ventas)
-        print("\n (❌) Venta registrada exitosamente")
+    ventas.append(venta)
+    guardar_ventas(ventas)
+    print("\n (❌) Venta registrada exitosamente")
 
 def generar_reporte_ventas():
         ventas = cargar_ventas()
