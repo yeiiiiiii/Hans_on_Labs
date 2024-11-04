@@ -23,37 +23,49 @@ def validaciones_codigos(codigo):
         return False
     
 def registrar_vehiculo():
-
-    codigo=input("\n ➔ Ingrese el c͟o͟d͟i͟g͟o͟ del vehículo ( 🏷️ ) : ")
-    if not validaciones_codigos(codigo):
-        return
-    marca=input("\n ➔ Ingrese la m͟a͟r͟c͟a͟ del vehículo ( 📦 ) : ")
-    modelo=input("\n ➔ Ingrese el m͟o͟d͟e͟l͟o͟ del vehículo ( 🛒 ) : ")
-    
-    try:
-        print("\n ➔ Ingrese el año de lanzamiento del vehículo ( 🗓️ ) : ")
-        anio = int(input())
-    except ValueError:
-        print("\n (❌) El año debe ser un número entero.")
-        return
-
-    vehiculos = cargar_vehiculos()
-    
-    for v in vehiculos:
-        if v["codigo"] == codigo:
-            print("\n (❌) Ya existe un vehículo con ese código")
+    while True:
+        codigo=input("\n ➔ Ingrese el c͟o͟d͟i͟g͟o͟ del vehículo ( 🏷️ ) : ")
+        if not validaciones_codigos(codigo):
+            return
+        marca=input("\n ➔ Ingrese la m͟a͟r͟c͟a͟ del vehículo ( 📦 ) : ")
+        modelo=input("\n ➔ Ingrese el m͟o͟d͟e͟l͟o͟ del vehículo ( 🛒 ) : ")
+        
+        try:
+            print("\n ➔ Ingrese el año de lanzamiento del vehículo ( 🗓️ ) : ")
+            anio = int(input())
+        except ValueError:
+            print("\n (❌) El año debe ser un número entero.")
             return
 
-    vehiculo = {
-        "codigo": codigo,
-        "marca": marca,
-        "modelo": modelo,
-        "anio": anio
-    }
+        vehiculos = cargar_vehiculos()
+        
+        for v in vehiculos:
+            if v["codigo"] == codigo:
+                print("\n (❌) Ya existe un vehículo con ese código")
+                return
 
-    vehiculos.append(vehiculo)
-    guardar_vehiculos(vehiculos)
-    print("\n ( ✔️ ) Vehículo registrado exitosamente.")
+        vehiculo = {
+            "codigo": codigo,
+            "marca": marca,
+            "modelo": modelo,
+            "anio": anio
+        }
+
+        vehiculos.append(vehiculo)
+        guardar_vehiculos(vehiculos)
+        print("\n ( ✔️ ) Vehículo registrado exitosamente.")
+
+        try:
+            opc = int(input("(↩️) Quiere ingresar otro código de nuevo: 1). Sí  0). No: "))
+            if opc == 0:
+                break
+            elif opc == 1:
+                # Aquí puedes colocar el código para volver a ingresar otro código
+                pass
+            else:
+                print("Por favor ingrese 1 o 0.")
+        except ValueError:
+            print("Entrada no válida. Por favor ingrese un número entero (1 o 0).")
 
 def listar_vehiculos():
     vehiculos = cargar_vehiculos()
