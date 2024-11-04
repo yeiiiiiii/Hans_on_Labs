@@ -16,8 +16,7 @@ def registrar_venta():
     print("\n ➔ Por favor ingrese el m͟o͟d͟e͟l͟o͟ del vehículo vendido ( 🛒 ) : ")
     modelo=input("--> ")
     try:
-        print("\n ➔ Ingrese la fecha de la venta por favor (YYYY-MM-DD) 📅 : ")
-        fecha=input("--> ")
+        fecha=input("\n ➔ Ingrese la fecha de la venta por favor (YYYY-MM-DD) 📅 : ")
         datetime.strptime(fecha, "%Y-%m-%d")
     except ValueError:
         print("\n (❌) Fecha incorrecta, la f͟e͟c͟h͟a͟ denbe ser asi: ejemplo (2024-10-23)")

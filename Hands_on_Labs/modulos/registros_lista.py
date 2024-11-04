@@ -24,14 +24,11 @@ def validaciones_codigos(codigo):
     
 def registrar_vehiculo():
 
-    print("\n ➔ Ingrese el c͟o͟d͟i͟g͟o͟ del vehículo ( 🏷️ ) : ")
-    codigo=input("--> ")
+    codigo=input("\n ➔ Ingrese el c͟o͟d͟i͟g͟o͟ del vehículo ( 🏷️ ) : ")
     if not validaciones_codigos(codigo):
         return
-    print("\n ➔ Ingrese la m͟a͟r͟c͟a͟ del vehículo ( 📦 ) : ")
-    marca=input("--> ")
-    print("\n ➔ Ingrese el m͟o͟d͟e͟l͟o͟ del vehículo ( 🛒 ) : ")
-    modelo=input("★ -  ")
+    marca=input("\n ➔ Ingrese la m͟a͟r͟c͟a͟ del vehículo ( 📦 ) : ")
+    modelo=input("\n ➔ Ingrese el m͟o͟d͟e͟l͟o͟ del vehículo ( 🛒 ) : ")
     
     try:
         print("\n ➔ Ingrese el año de lanzamiento del vehículo ( 🗓️ ) : ")

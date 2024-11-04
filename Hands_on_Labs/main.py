@@ -14,17 +14,21 @@ def menu():
         opcion=input(" ❓ = ")
         
         if opcion == '1':
+            print("\n . . . . ﹒ᶻz﹒🚝﹒𝗥𝗲𝗴𝗶𝘀𝘁𝗿𝗮𝗿 𝗩͟𝗲͟𝗵͟𝗶͟𝗰͟𝘂͟𝗹͟𝗼͟ ! . . . . . .")
             registrar_vehiculo()
         elif opcion == '2':
+            print("\n . . . . ﹒ᶻz﹒💰﹒𝗥𝗲𝗴𝗶𝘀𝘁𝗿𝗮𝗿 𝗩͟𝗲͟𝗻͟𝘁͟𝗮͟𝘀͟ ! . . . . . .")
             registrar_venta()
         elif opcion == '3':
+            print("\n . . . . ﹒ᶻz﹒📝﹒𝗟𝗶𝘀𝘁𝗮𝗿 𝗩͟𝗲͟𝗵͟𝗶͟𝗰͟𝘂͟𝗹͟𝗼͟𝘀͟ ! . . . . . .")
             listar_vehiculos()
         elif opcion == '4':
+            print("\n . . . . ﹒ᶻz﹒📇﹒𝗚𝗲𝗻𝗲𝗿𝗮𝗿 𝗥͟𝗲͟𝗽͟𝗼͟𝗿͟𝘁͟𝗲͟ ! . . . . . .")
             generar_reporte_ventas()
         elif opcion == '5':
-            print("🚪 . . . Saliendo del programa ")
+            print("\n 🚪 . . . Saliendo del programa ")
             break
         else:
-            print("Opción no permitida, es del 1 al 5")
+            print("\n (❌) Opción no permitida, es del 1 al 5")
 
 menu()
