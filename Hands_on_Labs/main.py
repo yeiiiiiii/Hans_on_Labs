@@ -3,13 +3,14 @@ from modulos.registros_lista import*
 def menu():
 
     while True:
-        print("\n----- Menú Principal -----")
-        print("1. Registrar vehículo en exhibición")
-        print("2. Registrar venta diaria")
-        print("3. Lista de vehículos en exhibición")
-        print("4. Reporte de ventas por mes")
-        print("5. Salir")
-        print("Seleccione una opción")
+        print(" . . . . . . . . . 𝗠𝗲𝗻𝘂 𝗣𝗿𝗶𝗻𝗰𝗶𝗽𝗮𝗹 . . . . . . . . . ")
+        print(" . 𝟏. Registrar vehículo en exhibición            . ")
+        print(" . 𝟐. Registrar venta diaria                      . ")
+        print(" . 𝟑. Lista de vehículos en exhibición            . ")
+        print(" . 𝟒. Reporte de ventas por mes                   . ")
+        print(" . 𝟓. Salir                                       . ")
+        print(" . . . . . . . . . . . . . . . . . . . . . . . . .  ")
+        print(" . Seleccione una opción")
         opcion=input("--> ")
         
         if opcion == '1':
