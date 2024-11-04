@@ -18,7 +18,7 @@ def registrar_venta():
         fecha=input("\n ➔ Ingrese la fecha de la venta por favor (YYYY-MM-DD) 📅 : ")
         datetime.strptime(fecha, "%Y-%m-%d")
     except ValueError:
-        print("\n (❌) Fecha incorrecta, la f͟e͟c͟h͟a͟ denbe ser asi: ejemplo (2024-10-23)")
+        print("\n  (❌) Fecha incorrecta, la f͟e͟c͟h͟a͟ denbe ser asi: ejemplo (2024-10-23)")
         return
     
     try:
