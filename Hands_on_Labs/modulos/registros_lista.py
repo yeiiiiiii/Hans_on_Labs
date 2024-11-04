@@ -15,36 +15,33 @@ def validaciones_codigos(codigo):
     try:
         codigo_num = int(codigo)
         if codigo_num < 0:
-            print('No se permiten códigos negativos.')
+            print('\n (❌) No se permiten códigos negativos.')
             return False
         return True
     except ValueError:
-        print('El código debe contener solo números.')
+        print('\n (❌) El código debe contener solo números.')
         return False
     
 def registrar_vehiculo():
 
-    print("Ingrese el código del vehículo")
-    codigo=input("--> ")
+    codigo=input("\n ➔ Ingrese el c͟o͟d͟i͟g͟o͟ del vehículo ( 🏷️ ) : ")
     if not validaciones_codigos(codigo):
         return
-    print("Ingrese la marca del vehículo")
-    marca=input("--> ")
-    print("Ingrese el modelo del vehículo")
-    modelo=input("--> ")
+    marca=input("\n ➔ Ingrese la m͟a͟r͟c͟a͟ del vehículo ( 📦 ) : ")
+    modelo=input("\n ➔ Ingrese el m͟o͟d͟e͟l͟o͟ del vehículo ( 🛒 ) : ")
     
     try:
-        print("Ingrese el año de lanzamiento del vehículo")
+        print("\n ➔ Ingrese el año de lanzamiento del vehículo ( 🗓️ ) : ")
         anio = int(input())
     except ValueError:
-        print("El año debe ser un número entero.")
+        print("\n (❌) El año debe ser un número entero.")
         return
 
     vehiculos = cargar_vehiculos()
     
     for v in vehiculos:
         if v["codigo"] == codigo:
-            print("Ya existe un vehículo con ese código")
+            print("\n (❌) Ya existe un vehículo con ese código")
             return
 
     vehiculo = {
@@ -56,19 +53,21 @@ def registrar_vehiculo():
 
     vehiculos.append(vehiculo)
     guardar_vehiculos(vehiculos)
-    print("Vehículo registrado exitosamente.")
+    print("\n ( ✔️ ) Vehículo registrado exitosamente.")
 
 def listar_vehiculos():
     vehiculos = cargar_vehiculos()
     if not vehiculos:
-        print("No hay vehículos registrados.")
+        print("\n (❌) No hay vehículos registrados.")
     else:
         print("\n--- Vehículos en exhibición ---")
         for v in vehiculos:
-            print(f"Código: {v['codigo']}, Marca: {v['marca']}, Modelo: {v['modelo']}, Año: {v['anio']}")
+            print("\n           ﹔🚖﹒info ﹗")
+            print(f"c͟o͟d͟i͟g͟o͟: {v['codigo']}, m͟a͟r͟c͟a͟: {v['marca']}, m͟o͟d͟e͟l͟o͟: {v['modelo']}, 🕑 Año: {v['anio']}")
 
     # Guardar el listado en un archivo
     with open("listado_vehiculos.txt", "w") as file:
         for v in vehiculos:
-            file.write(f"Código: {v['codigo']}, Marca: {v['marca']}, Modelo: {v['modelo']}, Año: {v['anio']}\n")
-    print("Listado guardado exitosamente ")
+            print("\n           ﹔🚖﹒info ﹗")
+            file.write(f"c͟o͟d͟i͟g͟o͟: {v['codigo']}, m͟a͟r͟c͟a͟: {v['marca']}, m͟o͟d͟e͟l͟o͟: {v['modelo']}, 🕑 Año: {v['anio']}\n")
+    print("\n ( ✔️ ) Listado guardado exitosamente ")
